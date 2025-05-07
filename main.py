@@ -12,8 +12,19 @@ load_dotenv()
 llm = init_chat_model(
     "anthropic:claude-3-5-sonnet-latest"
 )
+
+class MessageClassifier(BaseModel):
+    message_type: Literal["emotional", "logical"] = Field(
+        ...,
+        description="Classify if the message requires and emotional (therapist) or logical"
+    )
+
+
 class State(TypedDict):
     messages: Annotated[list, add_messages]
+    message_type: str | None
+
+
 
 graph_builder = StateGraph(State)
 
@@ -26,7 +37,3 @@ graph_builder.add_edge("chatbot", END)
 
 graph = graph_builder.compile()
 
-user_input = input("Enter a message: ")
-state = graph.invoke({"messages": [{"role": "user", "content":user_input}]})
-
-print(state["messages"][-1].content)
