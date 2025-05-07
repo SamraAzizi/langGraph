@@ -33,3 +33,5 @@ graph = graph_builder.compile()
 
 user_input = input("Enter a message: ")
 state = graph.invoke({"messages": [{"role":"user", "content": user_input}]})
+
+print(state["message"][-1].content)

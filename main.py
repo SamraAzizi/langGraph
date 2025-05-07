@@ -16,7 +16,7 @@ llm = init_chat_model(
 class MessageClassifier(BaseModel):
     message_type: Literal["emotional", "logical"] = Field(
         ...,
-        description="Classify if the message requires and emotional (therapist) or logical"
+        description="Classify if the message requires and emotional (therapist) or logical response"
     )
 
 
@@ -25,15 +25,11 @@ class State(TypedDict):
     message_type: str | None
 
 
+def classify_message()
+
 
 graph_builder = StateGraph(State)
 
-def chatbot(state:State):
-    return {"messages": [llm.invoke(state["messages"])]}
-
-graph_builder.add_node("chatbot", chatbot)
-graph_builder.add_edge(START, "chatbot")
-graph_builder.add_edge("chatbot", END)
 
 graph = graph_builder.compile()
 
