@@ -22,4 +22,11 @@ def chatbot(state:State):
 
 graph_builder.add_node("chatbot", chatbot)
 graph_builder.add_edge(START, "chatbot")
-graph_builder.add_edge(END, "chatbot")
+graph_builder.add_edge("chatbot", END)
+
+graph = graph_builder.compile()
+
+user_input = input("Enter a message: ")
+state = graph.invoke({"messages": [{"role": "user", "content":user_input}]})
+
+print(state["messages"][-1].content)
