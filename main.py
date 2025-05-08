@@ -32,15 +32,23 @@ def classify_message(state: State):
     classifier_llm = llm.with_structured_output(MessageClassifier)
 
     result = classifier_llm.invoke([
+        {
         "role": "system",
         "content": """Classif the user message as either:
         - 'emotional' : if it asks for the emotional support, therapy, deals with feelings, or personal problems
         - 'logical': if it asks for fact, information, logical analysis, or practical solutions """
+        },
+        {"role": "user", "content": last_message.content}
     ])
+    return {"message_type": result.message_type}
 
 
 def router(state: State):
-    pass
+    message_type = state.get("message_type", "logical")
+    if message_type == "emotional":
+        return {"next": "therapist"}
+    
+    return {"next": "logical"}
 
 def therapist_agent(state: State):
     pass
