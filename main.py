@@ -51,7 +51,15 @@ def router(state: State):
     return {"next": "logical"}
 
 def therapist_agent(state: State):
-    pass
+    last_message = state["message"][-1]
+
+    messsages = [
+        {"role": "system",
+         "content": """You are a compationate therapist.Focus on the emotional aspects of the user's message.
+         Show empathy, evaluate thier feelings, and help them process their emotions.
+         Ask thoughful questions to help them explore their feelings more deeply.
+         Avoid giving logical solutions unless explicitly asked."""}
+    ]
 
 def logical_agent(state: State)
 
