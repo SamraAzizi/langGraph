@@ -58,13 +58,42 @@ def therapist_agent(state: State):
          "content": """You are a compationate therapist.Focus on the emotional aspects of the user's message.
          Show empathy, evaluate thier feelings, and help them process their emotions.
          Ask thoughful questions to help them explore their feelings more deeply.
-         Avoid giving logical solutions unless explicitly asked."""}
+         Avoid giving logical solutions unless explicitly asked."""
+         },
+         {
+             "role": "user",
+             "content": last_message.content
+         }
+
     ]
 
-def logical_agent(state: State)
+    reply = llm.invoke(message)
+    return {"message": [{"role": "assistant", "content": reply.content}]}
+
+def logical_agent(state: State):
+    last_message = state["message"][-1]
+
+    messsages = [
+        {"role": "system",
+         "content": """You are a compationate therapist.Focus on the emotional aspects of the user's message.
+         Show empathy, evaluate thier feelings, and help them process their emotions.
+         Ask thoughful questions to help them explore their feelings more deeply.
+         Avoid giving logical solutions unless explicitly asked."""
+         },
+         {
+             "role": "user",
+             "content": last_message.content
+         }
+
+    ]
+
+    reply = llm.invoke(message)
+    return {"message": [{"role": "assistant", "content": reply.content}]}
 
 
-graph_builder = StateGraph(State)
+
+graph_builder = StateGraph(State):
+    pass
 
 
 graph = graph_builder.compile()
