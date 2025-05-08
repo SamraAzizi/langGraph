@@ -20,12 +20,30 @@ class MessageClassifier(BaseModel):
     )
 
 
+
+
 class State(TypedDict):
     messages: Annotated[list, add_messages]
     message_type: str | None
 
 
-def classify_message()
+def classify_message(state: State):
+    last_message = state["message"][-1]
+    classifier_llm = llm.with_structured_output(MessageClassifier)
+
+    result = classifier_llm.invoke([
+        "role": "system",
+        "content": ""
+    ])
+
+
+def router(state: State):
+    pass
+
+def therapist_agent(state: State):
+    pass
+
+def logical_agent(state: State)
 
 
 graph_builder = StateGraph(State)
