@@ -33,7 +33,9 @@ def classify_message(state: State):
 
     result = classifier_llm.invoke([
         "role": "system",
-        "content": ""
+        "content": """Classif the user message as either:
+        - 'emotional' : if it asks for the emotional support, therapy, deals with feelings, or personal problems
+        - 'logical': if it asks for fact, information, logical analysis, or practical solutions """
     ])
 
 
