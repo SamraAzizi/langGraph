@@ -110,5 +110,16 @@ graph_builder.add_conditional_edges(
     {"therapist": "therapist", "logical": "logical"}
 )
 
+graph_builder.add_edge("therapist", END)
+graph_builder.add_edge("logical", END)
+
 graph = graph_builder.compile()
 
+def run_chatbot():
+    state = {"messages": [], "message_type": None}
+
+    while True:
+        user_input = input("message: ")
+        if user_input == "exit":
+            print("bye")
+            break
