@@ -123,3 +123,15 @@ def run_chatbot():
         if user_input == "exit":
             print("bye")
             break
+
+        
+        state["messages"] = state.get("messages", []) + [
+            {
+                "role":"user", "content": user_input
+            }
+        ]
+
+        state = graph.invoke(state)
+
+        if state.get("messages") and len(state["messages"]) > 0:
+            
