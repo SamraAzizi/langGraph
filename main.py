@@ -101,6 +101,14 @@ graph_builder.add_node("router", router)
 graph_builder.add_node("therapist", therapist_agent) 
 graph_builder.add_node("logical", logical_agent)   
 
+graph_builder.add_edge(START, "classifier")
+graph_builder.add_edge("classifier", "router")
+
+graph_builder.add_conditional_edges(
+    "router",
+    lambda state: state.get("next"),
+    {"therapist": "therapist", "logical": "logical"}
+)
 
 graph = graph_builder.compile()
 
