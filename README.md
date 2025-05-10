@@ -57,3 +57,11 @@ python simple_example.py
 
 Ensure that any necessary environment variables are set. You can configure them in the .env file.
 
+### Project Structure
+
+- main.py: Description of what this file does
+- simple_example.py: Description of this example script
+- .env: Purpose of this file
+- pyproject.toml: Details about project dependencies and configurations
+- .gitignore: Files and directories to be ignored by Git
+
