@@ -1,16 +1,17 @@
 # langGraph
 
-langGraph is a Python project designed to analyze linguistic patterns in text data. This tool aims to provide insights into language usage trends and assist in natural language processing tasks.
+langGraph is a conversational chatbot built using LangGraph and LangChain, capable of routing user input between emotional and logical agents. It uses Claude 3.5 Sonnet as the backend language model to classify and respond to user messages appropriately. This project demonstrates how to use a structured state graph and message routing to create an AI assistant that can switch roles dynamically—acting as a therapist or a logical assistant based on message context.
 
 
-## Features
+##  Features
 
-- **Feature 1**: Brief description of feature 1
-- **Feature 2**: Brief description of feature 2
-- **Feature 3**: Brief description of feature 3
+-  **Automatic Classification**: Classifies messages as emotional or logical.
+-  **Therapist Agent**: Responds empathetically, focusing on emotional support.
+-  **Logical Agent**: Delivers fact-based, analytical answers without addressing feelings.
+-  **State Graph Architecture**: Built using LangGraph's state graph architecture.
 
 
-## Installation
+##  Installation
 
 To install and set up the project locally, follow these steps:
 
@@ -19,49 +20,61 @@ To install and set up the project locally, follow these steps:
 ```bash
    git clone https://github.com/SamraAzizi/langGraph.git
    cd langGraph
-```
 
-2. Set up a virtual environment (optional but recommended):
+```
+2. Create and activate a virtual environment (recommended):
 
 ```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-```
-
-3. Install the required dependencies:
+```  
+3. Install dependencies:
 ```bash
+
 pip install -r requirements.txt
-
 ```
 
-Note: If a requirements.txt file is not present, you can install dependencies using the pyproject.toml file:
-
+4. Set up environment variables in a .env file:
 ```bash
-pip install .
+# Example .env
+ANTHROPIC_API_KEY=your_api_key_here
 ```
 
 ### Usage
 
-To run the main application:
+Run the chatbot interactively in your terminal:
 
 ```bash
 python main.py
 ```
 
-For a simple example demonstrating the core functionality:
+
+Type messages to interact. To exit the chatbot, type:
 
 ```bash
-python simple_example.py
+exit
 ```
 
-Ensure that any necessary environment variables are set. You can configure them in the .env file.
+
+### How It Works
+- Classification: Uses Claude 3.5 to classify user input as emotional or logical.
+- Routing: Based on classification, routes the message to the appropriate agent.
+
+#### Agent Response:
+
+- Therapist: Empathetic, avoids logic unless asked.
+- Therapist: Empathetic, avoids logic unless asked.
 
 ### Project Structure
 
-- main.py: Description of what this file does
-- simple_example.py: Description of this example script
-- .env: Purpose of this file
-- pyproject.toml: Details about project dependencies and configurations
-- .gitignore: Files and directories to be ignored by Git
+```bash
+├── main.py              # Main chatbot script
+├── .env                 # API keys and environment config
+├── requirements.txt     # Python dependencies
 
+```
+
+### To Do
+- Improve handling of long conversations
+- Add memory/persistence for better context retention
+- Deploy as a web app using Streamlit or FastAPI
