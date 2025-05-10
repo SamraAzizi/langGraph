@@ -34,3 +34,26 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 
 ```
+
+Note: If a requirements.txt file is not present, you can install dependencies using the pyproject.toml file:
+
+```bash
+pip install .
+```
+
+### Usage
+
+To run the main application:
+
+```bash
+python main.py
+```
+
+For a simple example demonstrating the core functionality:
+
+```bash
+python simple_example.py
+```
+
+Ensure that any necessary environment variables are set. You can configure them in the .env file.
+
